@@ -15,9 +15,13 @@ import org.apache.spark.api.java.function.PairFunction;
 import scala.Tuple2;
 
 /**
+ * <pre>
+ * 计算学生的平均成绩
+ * 
  * 参考例子：http://blog.csdn.net/T1DMzks/article/category/7062215
  * 
  * @author onlyone
+ * </pre>
  */
 public class StudentAvgScore {
 
