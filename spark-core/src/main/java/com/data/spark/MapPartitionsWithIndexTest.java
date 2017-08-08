@@ -23,7 +23,7 @@ import scala.Tuple2;
  * 
  * </pre>
  */
-public class PartitionerTest {
+public class MapPartitionsWithIndexTest {
 
     private static String master = "local[*]";
 
@@ -46,6 +46,8 @@ public class PartitionerTest {
         SparkConf conf = new SparkConf();
         conf.setAppName(StudentAvgScore.class.getName()).setMaster(master);
         JavaSparkContext javaSparkContext = new JavaSparkContext(conf);
+        // 设置日志等级
+        javaSparkContext.setLogLevel("ERROR");
 
         // 加载源数据，并指定三个分片
         JavaPairRDD<Integer, Integer> pairRDD = javaSparkContext.parallelizePairs(list, 3);
