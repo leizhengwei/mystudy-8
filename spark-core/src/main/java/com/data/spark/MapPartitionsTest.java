@@ -60,7 +60,7 @@ public class MapPartitionsTest {
                 return tuple2s.iterator();
             }
         });
-        
+
         tuple2JavaRDD.foreach(new VoidFunction<Tuple2<Integer, Integer>>() {
 
             @Override
