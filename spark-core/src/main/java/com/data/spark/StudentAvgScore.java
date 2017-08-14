@@ -43,6 +43,7 @@ public class StudentAvgScore {
         SparkConf conf = new SparkConf();
         conf.setAppName(StudentAvgScore.class.getName()).setMaster(master);
         JavaSparkContext javaSparkContext = new JavaSparkContext(conf);
+        javaSparkContext.setLogLevel("ERROR");
 
         // 加载源数据，并指定三个分区
         JavaRDD<ScoreDetail> scoreDetailsRDD = javaSparkContext.parallelize(scoreDetails, 3);

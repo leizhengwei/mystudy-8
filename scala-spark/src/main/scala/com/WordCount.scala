@@ -19,7 +19,8 @@ object WordCount {
       ScoreDetail("add","ma",22)
 
 
-    val scoresWithKey = for { i <- scores } yield (i.studentName, i)
+
+   val scoresWithKey = for { i <- scores } yield (i.studentName, i)
 
     val conf = new SparkConf().setAppName("aaa").setMaster("local")
     val sc = new SparkContext(conf)
@@ -27,7 +28,7 @@ object WordCount {
     val scoresWithKeyRDD = sc.parallelize(scoresWithKey)
 
     val avgScoresRDD = scoresWithKeyRDD.combineByKey(
-      (x: ScoreDetail) => (x.score, 1) /*createCombiner*/,
+      x => (x.score, 1) /*createCombiner*/,
       (acc: (Float, Int), x: ScoreDetail) => (acc._1 + x.score, acc._2 + 1) /*mergeValue*/,
       (acc1: (Float, Int), acc2: (Float, Int)) => (acc1._1 + acc2._1, acc1._2 + acc2._2) /*mergeCombiners*/
       // calculate the average
